@@ -198,19 +198,19 @@ export default function ProfilePage() {
           </div>
 
           {/* Balance */}
-          <div className="mt-4 bg-secondary rounded-xl p-4 flex items-center justify-between">
+          <div className="mt-4 bg-secondary rounded-xl p-3 flex items-center justify-between">
             <div>
-              <p className="text-xs text-muted-foreground">Баланс</p>
-              <p className="text-2xl font-black text-[#2ee06e]">{user.balance.toFixed(2)} ₽</p>
+              <p className="text-[10px] text-muted-foreground">Баланс</p>
+              <p className="text-lg font-bold text-[#2ee06e]">{user.balance.toFixed(2)} ₽</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               <Link
                 href="/deposit"
-                className="bg-[#2ee06e] hover:bg-[#25c45c] text-[#0f1923] font-bold text-sm px-4 py-2 rounded-lg transition-colors"
+                className="bg-[#2ee06e] hover:bg-[#25c45c] text-[#0f1923] font-semibold text-xs px-3 py-1.5 rounded-md transition-colors"
               >
                 Пополнить
               </Link>
-              <button className="bg-secondary border border-border hover:bg-border text-foreground font-bold text-sm px-4 py-2 rounded-lg transition-colors">
+              <button className="bg-background border border-border hover:bg-border text-foreground font-semibold text-xs px-3 py-1.5 rounded-md transition-colors">
                 Вывести
               </button>
             </div>

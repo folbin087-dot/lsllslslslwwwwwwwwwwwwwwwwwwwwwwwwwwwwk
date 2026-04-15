@@ -99,12 +99,32 @@ export default function AviatrixPage() {
   const countdownRef = useRef<NodeJS.Timeout | null>(null)
   const flyAwayIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Generate crash point with house edge
+  // Generate crash point with house edge (~8-12%)
+  // Psychology: Many low crashes, occasional high multipliers for dopamine
+  // Uses exponential distribution favoring lower values
   const generateCrashPoint = useCallback(() => {
-    const e = 2 ** 32
-    const h = Math.floor(Math.random() * e)
-    if (h % 33 === 0) return 1.0 // instant crash ~3%
-    return Math.max(1.0, parseFloat((100 / (100 - (h % 100)) + Math.random() * 3).toFixed(2)))
+    const random = Math.random()
+    
+    // 5% chance of instant crash (1.00x) - creates urgency
+    if (random < 0.05) return 1.0
+    
+    // 15% chance of very early crash (1.01-1.20x) - punishes late cashouts
+    if (random < 0.20) return parseFloat((1.01 + Math.random() * 0.19).toFixed(2))
+    
+    // 25% chance of early crash (1.20-1.50x)
+    if (random < 0.45) return parseFloat((1.20 + Math.random() * 0.30).toFixed(2))
+    
+    // 30% chance of mid crash (1.50-2.50x) - where most players cash out
+    if (random < 0.75) return parseFloat((1.50 + Math.random() * 1.00).toFixed(2))
+    
+    // 15% chance of good crash (2.50-5.00x)
+    if (random < 0.90) return parseFloat((2.50 + Math.random() * 2.50).toFixed(2))
+    
+    // 8% chance of high crash (5.00-15.00x) - keeps players hooked
+    if (random < 0.98) return parseFloat((5.00 + Math.random() * 10.00).toFixed(2))
+    
+    // 2% chance of jackpot (15.00-50.00x) - rare big wins
+    return parseFloat((15.00 + Math.random() * 35.00).toFixed(2))
   }, [])
 
   // Generate fake players

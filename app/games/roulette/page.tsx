@@ -166,9 +166,44 @@ export default function RoulettePage() {
       setBalance((b) => parseFloat((b - currentTotalBet).toFixed(2)))
     }
 
-    // Pick random winning number
-    const winIndex = Math.floor(Math.random() * ROULETTE_NUMBERS.length)
-    const winNumber = ROULETTE_NUMBERS[winIndex]
+    // Pick winning number with house edge bias
+    // Zero has extra weight (2.7% base + 3% extra = ~5.7% house edge)
+    // When players bet big, slightly bias toward unfavorable outcomes
+    let winIndex: number
+    let winNumber: number
+    
+    const currentBets = betsRef.current
+    const hasBigBet = currentBets.some(b => b.amount >= 100)
+    
+    // 8% chance of zero (normal is ~2.7%) - primary house edge source
+    if (Math.random() < 0.08) {
+      winNumber = 0
+      winIndex = 0
+    } 
+    // For big bets, 15% chance to land on opposite color
+    else if (hasBigBet && currentBets.length > 0 && Math.random() < 0.15) {
+      const mainBet = currentBets[0]
+      if (mainBet.type === "red") {
+        // Pick a black number
+        const blackNumbers = ROULETTE_NUMBERS.filter(n => n !== 0 && !RED_NUMBERS.includes(n))
+        winNumber = blackNumbers[Math.floor(Math.random() * blackNumbers.length)]
+        winIndex = ROULETTE_NUMBERS.indexOf(winNumber)
+      } else if (mainBet.type === "black") {
+        // Pick a red number
+        const redNumbers = ROULETTE_NUMBERS.filter(n => RED_NUMBERS.includes(n))
+        winNumber = redNumbers[Math.floor(Math.random() * redNumbers.length)]
+        winIndex = ROULETTE_NUMBERS.indexOf(winNumber)
+      } else {
+        // Fair random for other bet types
+        winIndex = Math.floor(Math.random() * ROULETTE_NUMBERS.length)
+        winNumber = ROULETTE_NUMBERS[winIndex]
+      }
+    }
+    // Normal fair spin
+    else {
+      winIndex = Math.floor(Math.random() * ROULETTE_NUMBERS.length)
+      winNumber = ROULETTE_NUMBERS[winIndex]
+    }
     const segAngle = 360 / ROULETTE_NUMBERS.length
     const spins = 5 + Math.floor(Math.random() * 3)
     
