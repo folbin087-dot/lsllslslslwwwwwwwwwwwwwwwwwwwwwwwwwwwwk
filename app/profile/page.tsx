@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { User, Copy, TrendingUp, TrendingDown, DollarSign, History, Check, Loader2 } from "lucide-react"
+import { User, Users, Copy, TrendingUp, TrendingDown, DollarSign, History, Check, Loader2 } from "lucide-react"
 
 interface UserData {
   id: string
@@ -233,6 +233,35 @@ export default function ProfilePage() {
             </div>
           </div>
         </div>
+
+        {/* Partner Program Banner */}
+        <Link 
+          href="/partner"
+          className="block bg-gradient-to-r from-[#2ee06e]/10 via-[#00b4d8]/10 to-[#ffd93d]/10 border border-[#2ee06e]/30 rounded-xl p-4 hover:from-[#2ee06e]/20 hover:via-[#00b4d8]/20 hover:to-[#ffd93d]/20 transition-colors group"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#2ee06e]/20 flex items-center justify-center">
+                <Users className="w-5 h-5 text-[#2ee06e]" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                  Партнерская программа
+                  <span className="text-[10px] bg-[#ffd93d]/20 text-[#ffd93d] px-1.5 py-0.5 rounded font-semibold">5%</span>
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Зарабатывайте с проигрышей ваших рефералов
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 text-[#2ee06e] group-hover:translate-x-1 transition-transform">
+              <span className="text-xs font-semibold">Открыть</span>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </Link>
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

@@ -148,7 +148,7 @@ export default function Header() {
           </Link>
           <Link
             href="/partner"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-secondary transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#2ee06e]/20 to-[#00b4d8]/20 text-[#2ee06e] hover:from-[#2ee06e]/30 hover:to-[#00b4d8]/30 border border-[#2ee06e]/30 transition-colors"
           >
             <Users className="w-4 h-4" />
             Партнерка
@@ -231,11 +231,12 @@ export default function Header() {
             </Link>
             <Link
               href="/partner"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-secondary"
+              className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium bg-gradient-to-r from-[#2ee06e]/10 to-[#00b4d8]/10 text-[#2ee06e] border border-[#2ee06e]/20"
               onClick={() => setMobileMenuOpen(false)}
             >
               <Users className="w-4 h-4" />
               Партнерка
+              <span className="ml-auto text-[10px] bg-[#ffd93d]/20 text-[#ffd93d] px-1.5 py-0.5 rounded font-semibold">5%</span>
             </Link>
             <Link
               href="/admin"
