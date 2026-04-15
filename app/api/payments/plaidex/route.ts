@@ -7,10 +7,10 @@ import crypto from "crypto"
 
 const PLAIDEX_API_URL = "https://api.plaidex.space/v1"
 
-// API credentials - loaded from environment variables with fallback to provided keys
-// In production, set these in Vercel environment variables
-const PLAIDEX_API_KEY = process.env.PLAIDEX_API_KEY || "zR-rWu0wzfCdF2gz8iZeij4ReHmcidkkPIJetPjmhOk"
-const PLAIDEX_API_SECRET = process.env.PLAIDEX_API_SECRET || "PRlqSQ3Lj4_Tak91dbfWbEVtORY3NPNc44t8c2n2jzm_gb7fjaao6JbpnWFbkw0LzCnPyNSxwpytyPjzrEW16w"
+// API credentials - MUST be set via environment variables only
+// Set PLAIDEX_API_KEY and PLAIDEX_API_SECRET in your Vercel project environment variables
+const PLAIDEX_API_KEY = process.env.PLAIDEX_API_KEY || ""
+const PLAIDEX_API_SECRET = process.env.PLAIDEX_API_SECRET || ""
 
 // Site URL for callbacks
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://plaidcas.live"

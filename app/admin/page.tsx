@@ -8,9 +8,10 @@ import AdminLogs from "@/components/admin/admin-logs"
 import AdminPromos from "@/components/admin/admin-promos"
 import AdminSettings from "@/components/admin/admin-settings"
 import AdminBonusChannels from "@/components/admin/admin-bonus-channels"
+import AdminPartners from "@/components/admin/admin-partners"
 import { Shield, ShieldAlert, AlertTriangle, Lock } from "lucide-react"
 
-// Regular admins can only see: stats, users, logs, promos
+// Regular admins can only see: stats, users, logs, promos, partners
 // Super admins (creators) can see everything including: settings (odds), telegram links
 const adminTabs = [
   { id: "stats", label: "Статистика", adminOnly: false, description: "Общая статистика казино" },
@@ -18,6 +19,7 @@ const adminTabs = [
   { id: "logs", label: "Логи", adminOnly: false, description: "Системные логи" },
   { id: "promos", label: "Промокоды", adminOnly: false, description: "Создание промокодов" },
   { id: "bonuses", label: "Бонус-каналы", adminOnly: false, description: "Каналы за подписку" },
+  { id: "partners", label: "Партнеры", adminOnly: false, description: "Управление партнерами и выплатами" },
   { id: "config", label: "Настройки", adminOnly: true, description: "Подкрутка шансов и ссылки" }, // Super admin only
 ]
 
@@ -186,6 +188,7 @@ export default function AdminPage() {
         {activeTab === "logs" && <AdminLogs />}
         {activeTab === "promos" && <AdminPromos />}
         {activeTab === "bonuses" && <AdminBonusChannels />}
+        {activeTab === "partners" && <AdminPartners />}
         {activeTab === "config" && isSuperAdmin && <AdminSettings />}
       </main>
     </div>

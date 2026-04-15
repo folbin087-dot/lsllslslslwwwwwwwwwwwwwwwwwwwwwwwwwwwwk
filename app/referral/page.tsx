@@ -41,11 +41,11 @@ export default function ReferralPage() {
         {/* Info Banner */}
         <div className="bg-gradient-to-r from-[#ffd93d]/20 to-[#e17055]/20 rounded-xl border border-[#ffd93d]/30 p-6">
           <h2 className="text-lg font-bold text-foreground mb-1">
-            Получайте 10% с каждого депозита!
+            Получайте 5% с проигрышей рефералов!
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Приглашайте друзей по вашей реферальной ссылке. Вы получите 10% от суммы каждого их
-            пополнения навсегда.
+            Приглашайте друзей по вашей реферальной ссылке. Вы получите 5% от их проигрышей
+            навсегда. Перейдите в раздел <strong>Партнерка</strong> для полной аналитики.
           </p>
         </div>
 

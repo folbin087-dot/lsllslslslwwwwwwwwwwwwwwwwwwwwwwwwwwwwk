@@ -4,7 +4,7 @@ import { query, withTransaction, getUserByTelegramId } from "@/lib/db"
 // Partner commission rate (from losses, not deposits)
 // This ensures we never lose money - partners only earn from player losses
 const PARTNER_COMMISSION_RATE = 0.05 // 5% of losses
-const PREMIUM_PARTNER_COMMISSION = 0.10 // 10% for premium partners
+const PREMIUM_PARTNER_COMMISSION = 0.08 // 8% for premium partners
 
 interface ReferralStats {
   total_referrals: number

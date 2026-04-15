@@ -67,8 +67,8 @@ BEGIN
       SELECT COALESCE(is_premium_partner, FALSE) INTO v_is_premium 
       FROM users WHERE id = v_partner_id;
       
-      -- Set commission rate (5% standard, 10% premium)
-      v_commission_rate := CASE WHEN v_is_premium THEN 0.10 ELSE 0.05 END;
+      -- Set commission rate (5% standard, 8% premium)
+      v_commission_rate := CASE WHEN v_is_premium THEN 0.08 ELSE 0.05 END;
       
       -- Calculate commission from the loss (amount is negative, so negate it)
       v_commission := ABS(NEW.amount) * v_commission_rate;
